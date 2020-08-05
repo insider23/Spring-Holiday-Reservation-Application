@@ -1,10 +1,32 @@
-package com.holidayreservation.holidayapp.model;
+package com.holidayreservation.holidayapp.entity;
 
+import javax.persistence.*;
+import java.sql.Date;
+
+@Entity
+@Table(name = "booking")
 public class Booking {
-    private User user;
-    private Housing housing;
-    private Services services;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int booking_id;
+    // one user can have many bookings
+    //in other words, many bookings can be done by one user - that's correct?
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    // one booking can have many housings - i think it doesn't makes sense?
+    //When we are booking, user chooses only one housing object - there is no need to anotate it, are there?
+    @ManyToOne
+    @JoinColumn(name = "housing_id")
+    private Housing housing;
+    //one booking to many services - it means that in one booking there could be many different services - how about it?
+    @OneToMany
+    @JoinColumn(name = "services_id")
+    private Services services;
+    private Date startDate;
+    private Date endDate;
+
+
 
     public Booking(User user, Housing housing, Services services, int booking_id) {
         this.user = user;

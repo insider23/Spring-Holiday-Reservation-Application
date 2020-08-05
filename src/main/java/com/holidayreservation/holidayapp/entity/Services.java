@@ -1,9 +1,16 @@
-package com.holidayreservation.holidayapp.model;
+package com.holidayreservation.holidayapp.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "services")
 public class Services {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int quantity;
     private double price;
+    private String serviceType;
 
     public Services(int id, int quantity, double price) {
         this.id = id;

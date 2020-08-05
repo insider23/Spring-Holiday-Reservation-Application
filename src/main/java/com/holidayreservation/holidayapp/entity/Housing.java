@@ -1,6 +1,12 @@
-package com.holidayreservation.holidayapp.model;
+package com.holidayreservation.holidayapp.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "housing")
 public class Housing {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String room;
     private String house;
