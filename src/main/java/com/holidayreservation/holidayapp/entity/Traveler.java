@@ -1,32 +1,34 @@
 package com.holidayreservation.holidayapp.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-public class User {
+public class Traveler {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue
+    private int traveler_id;
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
+    private Date dateOfBirth;
+
     //One user can have many bookings, but i have an error saying "'One to Many' attribute type should be a container"
-    @ManyToOne
-    private Booking booking;
 
 
-    public User(String username, String password, String firstName, String lastName, String email, int id) {
+    public Traveler(String username, String password, String firstName, String lastName, String email, int id, int traveler_id, Date dateOfBirth ) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.id = id;
+        this.traveler_id = traveler_id;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public User() {
+    public Traveler() {
     }
 
     public String getUsername() {
@@ -66,14 +68,23 @@ public class User {
     }
 
     public void setEmail(String email) {
+
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getTraveler_id() {
+        return traveler_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTraveler_id(int traveler_id) {
+        this.traveler_id = traveler_id;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

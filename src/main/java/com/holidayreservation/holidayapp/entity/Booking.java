@@ -4,63 +4,26 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "booking")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int booking_id;
-    // one user can have many bookings
-    //in other words, many bookings can be done by one user - that's correct?
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-    // one booking can have many housings - i think it doesn't makes sense?
-    //When we are booking, user chooses only one housing object - there is no need to anotate it, are there?
-    @ManyToOne
-    @JoinColumn(name = "housing_id")
-    private Housing housing;
-    //one booking to many services - it means that in one booking there could be many different services - how about it?
-    @OneToMany
-    @JoinColumn(name = "services_id")
-    private Services services;
+    private int housing_id;
+    private int services_Id;
+    private int traveler_id;
     private Date startDate;
     private Date endDate;
 
-
-
-    public Booking(User user, Housing housing, Services services, int booking_id) {
-        this.user = user;
-        this.housing = housing;
-        this.services = services;
+    public Booking(int booking_id, int housing_id, int services_Id, int traveler_id, Date startDate, Date endDate) {
         this.booking_id = booking_id;
+        this.housing_id = housing_id;
+        this.services_Id = services_Id;
+        this.traveler_id = traveler_id;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    public Booking(){
-
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Housing getHousing() {
-        return housing;
-    }
-
-    public void setHousing(Housing housing) {
-        this.housing = housing;
-    }
-
-    public Services getServices() {
-        return services;
-    }
-
-    public void setServices(Services services) {
-        this.services = services;
+    public Booking() {
     }
 
     public int getBooking_id() {
@@ -70,4 +33,45 @@ public class Booking {
     public void setBooking_id(int booking_id) {
         this.booking_id = booking_id;
     }
+
+    public int getHousing_id() {
+        return housing_id;
+    }
+
+    public void setHousing_id(int housing_id) {
+        this.housing_id = housing_id;
+    }
+
+    public int getServices_Id() {
+        return services_Id;
+    }
+
+    public void setServices_Id(int services_Id) {
+        this.services_Id = services_Id;
+    }
+
+    public int getTraveler_id() {
+        return traveler_id;
+    }
+
+    public void setTraveler_id(int traveler_id) {
+        this.traveler_id = traveler_id;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }
+

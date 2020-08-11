@@ -3,31 +3,31 @@ package com.holidayreservation.holidayapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "services")
 public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int services_id;
     private int quantity;
     private double price;
     private String serviceType;
 
-    public Services(int id, int quantity, double price) {
-        this.id = id;
+    public Services(int services_id, int quantity, double price, String serviceType) {
+        this.services_id = services_id;
         this.quantity = quantity;
         this.price = price;
+        this.serviceType = serviceType;
     }
 
     public Services(){
 
     }
 
-    public int getId() {
-        return id;
+    public int getServices_id() {
+        return services_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setServices_id(int services_id) {
+        this.services_id = services_id;
     }
 
     public int getQuantity() {
@@ -44,5 +44,13 @@ public class Services {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 }
