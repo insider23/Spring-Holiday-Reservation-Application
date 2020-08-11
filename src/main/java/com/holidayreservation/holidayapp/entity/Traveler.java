@@ -3,7 +3,6 @@ package com.holidayreservation.holidayapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +13,7 @@ public class User {
     private String lastName;
     private String email;
     //One user can have many bookings, but i have an error saying "'One to Many' attribute type should be a container"
-    @OneToMany
+    @ManyToOne
     private Booking booking;
 
 
