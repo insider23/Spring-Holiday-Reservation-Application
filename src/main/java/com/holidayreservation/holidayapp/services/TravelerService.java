@@ -20,6 +20,7 @@ public class TravelerService {
         travelerRepository.save(traveler);
     }
     public List<Traveler> getAllTravelers(){
+
         return (List<Traveler>) travelerRepository.findAll();
     }
 
