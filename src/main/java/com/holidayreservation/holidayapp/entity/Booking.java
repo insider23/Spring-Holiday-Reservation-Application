@@ -10,9 +10,17 @@ public class Booking {
     private int booking_id;
     private int housing_id;
     private int services_Id;
-    private int traveler_id;
     private Date startDate;
     private Date endDate;
+    @ManyToOne
+    @JoinColumn(name="traveler_id", insertable = false, updatable = false)
+    private Traveler traveler;
+    private int traveler_id;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Housing")
+    private Housing housing;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Services")
+    private Services services;
+
 
     public Booking(int booking_id, int housing_id, int services_Id, int traveler_id, Date startDate, Date endDate) {
         this.booking_id = booking_id;

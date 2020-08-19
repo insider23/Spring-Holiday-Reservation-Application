@@ -2,6 +2,7 @@ package com.holidayreservation.holidayapp.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Traveler {
@@ -14,8 +15,9 @@ public class Traveler {
     private String lastName;
     private String email;
     private Date dateOfBirth;
+    @OneToMany(mappedBy = "booking")
+    private List<Booking> bookingList;
 
-    //One user can have many bookings, but i have an error saying "'One to Many' attribute type should be a container"
 
 
     public Traveler(String username, String password, String firstName, String lastName, String email, int id, int traveler_id, Date dateOfBirth ) {

@@ -13,6 +13,8 @@ public class Housing {
     private int startDate;
     private int endDate;
     private int NumGuests;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Booking")
+    private Booking booking;
 
 
     public Housing(int housing_id, String room, String house, double price, int startDate, int endDate) {

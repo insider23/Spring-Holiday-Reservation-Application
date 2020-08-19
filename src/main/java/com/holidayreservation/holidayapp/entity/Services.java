@@ -10,6 +10,8 @@ public class Services {
     private int quantity;
     private double price;
     private String serviceType;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Booking")
+    private Booking booking;
 
     public Services(int services_id, int quantity, double price, String serviceType) {
         this.services_id = services_id;
