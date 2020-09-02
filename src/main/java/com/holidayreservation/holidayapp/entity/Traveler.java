@@ -15,7 +15,7 @@ public class Traveler {
     private String lastName;
     private String email;
     private Date dateOfBirth;
-    @OneToMany(mappedBy = "booking")
+    @OneToMany
     private List<Booking> bookingList;
 
 

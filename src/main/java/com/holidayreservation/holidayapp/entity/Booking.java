@@ -13,12 +13,12 @@ public class Booking {
     private Date startDate;
     private Date endDate;
     @ManyToOne
-    @JoinColumn(name="traveler_id", insertable = false, updatable = false)
+    @JoinColumn(name="Traveler", insertable = false, updatable = false)
     private Traveler traveler;
     private int traveler_id;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Housing")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Housing housing;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "Services")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Services services;
 
 
