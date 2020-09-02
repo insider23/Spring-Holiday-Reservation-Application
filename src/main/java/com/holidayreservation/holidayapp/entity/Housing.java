@@ -1,16 +1,24 @@
-package com.holidayreservation.holidayapp.model;
+package com.holidayreservation.holidayapp.entity;
 
+import javax.persistence.*;
+
+@Entity
 public class Housing {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int housing_id;
     private String room;
     private String house;
     private double price;
     private int startDate;
     private int endDate;
+    private int NumGuests;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Booking booking;
 
 
-    public Housing(int id, String room, String house, double price, int startDate, int endDate) {
-        this.id = id;
+    public Housing(int housing_id, String room, String house, double price, int startDate, int endDate) {
+        this.housing_id = housing_id;
         this.room = room;
         this.house = house;
         this.price = price;
@@ -21,12 +29,20 @@ public class Housing {
     public Housing() {
     }
 
-    public int getId() {
-        return id;
+    public int getNumGuests() {
+        return NumGuests;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumGuests(int numGuests) {
+        this.NumGuests = numGuests;
+    }
+
+    public int getHousing_id() {
+        return housing_id;
+    }
+
+    public void setHousing_id(int housing_id) {
+        this.housing_id = housing_id;
     }
 
     public String getRoom() {
